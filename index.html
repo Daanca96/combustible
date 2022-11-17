@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>DAANCA</title>
+
+  <!-- CSS  -->
+
+<style>
+.button {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+</head>
+<body>
+  
+
+<div>
+
+  <!--   Icon Section   -->
+  <div>
+       <center>
+        <h2 style="color: blue">SISTEMA DE CONBUSTIBLE AVION CN-235</h2><br><br>
+        <h3 style="color: red">SISTEMA DE INDICACION DE TRASVASE DE COMBUSTIBLE</h3> <br>
+       	<button class="button" onclick="pregunta1()">CON EL DEPOSITO AUXILIAR VACIO, EL ANUNCIADOR NO INDICA EL AVISO DE VACIO</button> <br><br><button class="button" onclick="pregunta2()"> EL SIMBOLO DE BARRA EN INDICADOR PRESS XFR NO SE ENCIENDE CUANDO LA BOMBA ELECTRICA ESTA AJUSTADA EN LA POSICION ON. </button> <br><br>
+        <button class="button" onclick="pregunta3()">EN EL DEPOSITO PRINCIPAL EXISTE LA CONDICION DE BAJO NIVEL DE COMBUSTIBLE, PERO NO SE ILUMINA EL AVISO 1 (2) FUEL LOW DEL IEDS.
+        </button> <br><br>
+
+
+        <h3 style="color: red">SISTEMA DE VENTILACION DE DEPOSITOS DE COMBUSTIBLE</h3>
+        <button class="button" onclick="pregunta4()">HAY FUGAS DE COMBUSTIBLE POR EL CONDUCTO NACA CUANDO LOS DEPOSITOS ESTAN LLENOS DURANTE LA OPERACION DE LLENADO DE COMBUSTIBLE.</button> <br>
+       </center> 
+  </div>
+
+
+ 
+
+  <script>
+
+    function pregunta1() {
+        if (confirm("TEN EN CUENTA QUE EN ESTA SITUACION LA AERONAVE NO ES OPERATIVA \n\n"+
+                    "¿ESTA SACADO EL INTERRUPTOR AUTOMATICO QB47 (QB48)?")) { 
+                if (confirm("INVESTIGAR LA RAZON DEL CIRCUITO ABIERTO ANTES DE METER EL INTERRUPTOR AUTOMATICO.\n\n ESTA TODO LISTO?")) {
+                    alert("Fin del reporte, por favor anota la correccion del reporte en el libro de vuelo con la siguiente instrucción. Se realiza cazafallas acuerdo a investigacion de averias del manual de mantenimiento con resultados satifactorios.");
+                }
+        }else {
+                if (confirm("INSTALAR PROVISIONALMENTE UNA CENTRAL DE COMBUSTIBLE ZD108 OPERATIVA. ¿SE ENCIENDE EL ANUNCIADOR?")) {
+                    alert("SUSTITUIR CENTRAL DE COMBUSTIBLE ZD108");
+                }else {
+                     if(confirm("VACIAR DE COMBUSTIBLE EL DEPOSITO AUXILIAR (Ver 12-11-00, Bloque 1) Y EFECTUAR PRUEBA DE CONTINUIDAD EN EL INTERRUPTOR DE FLOTADOR DE BAJO NIVEL QB41 (QB40). ¿ESTA AVERIADO EL INTERRUPTOR DE FLOTADOR?")){
+                         alert("SUSTITUIR EL INTERRUPTOR DE FLOTADOR DE BAJO NIVEL (Ver 28-44-12, Bloque 401).");
+                     }else{
+                         alert("INVESTIGAR Y RECTIFICAR AVERIA EN EL CABLEADO");
+                     }
+                }
+        }
+    }
+
+    function pregunta2(){
+      if (confirm("MIRAR AVISO 'ON' EN EL PROPIO INDICADOR.\n\n ¿HA DESAPARECIDO EL AVISO 'ON'?")) {
+             alert("EFECTUAR PROCEDIMIENTO DE INVESTIGACION DE AVERIAS EN EL SISTEMA DE TRASVASE Y ALIMENTACION DE MOTOR (Ver 28-22-00, Bloque 101).");
+      }else{
+       if (confirm("DESCONECTAR CONECTOR DEL MANOCONTACTOR QB39 (QB38) Y MEDIR ALIMENTACION. ¿ES SATISFACTORIA LA ALIMENTACION?")){
+              alert("SUSTITUIR MANOCONTACTOR QB39 (QB38) (Ver 28-44-11, Bloque 401).");
+        }else{
+              alert("INVESTIGAR Y RECTIFICAR AVERIA EN CABLEADO.");
+        }
+      }
+    }
+    
+    function pregunta3(){
+      if (confirm("EN EL DEPOSITO PRINCIPAL EXISTE LA CONDICION DE BAJO NIVEL DE COMBUSTIBLE, PERO NO SE ILUMINA EL AVISO 1 (2) FUEL LOW DEL IEDS.\n\n COMPROBAR BOMBA DE COMBUSTIBLE MINIMO. \n\n¿ESTA LA BOMBA PARADA?")) {
+          alert("EFECTUAR PROCEDIMIENTO DE INVESTIGACION DE AVERIAS EN SISTEMA DE NIVEL DE COMBUSTIBLE MINIMO (Ver 28-23-00, Bloque 101)");
+      }else{
+        if (confirm("DESCONECTAR CONECTOR ELECTRICO WA21a (WA22a) Y PUENTEAR CLAVIJAS 'A' Y 'C'. ¿SE ILUMINA EL AVISO 1 (2) FUEL LOW EN LA PANTALLA DE IEDS?")){
+            alert("SUSTITUIR INTERRUPTOR DE FLOTADOR DE BAJO NIVEL WA21 (WA22) (Ver 28-23-12, Bloque 401).");
+        } else{
+             alert("INVESTIGAR Y RECTIFICAR AVERIA EN CABLEADO");
+        }
+      }
+    }
+
+    function pregunta4(){
+      if(confirm("COMPROBAR ANUNCIADOR DE SOBRELLENADO DEL DEPOSITO, EN PANEL DE LLENADO A PRESION. \n\n ¿ESTA EL ANUNCIADOR ENCENDIDO?")){
+        alert("SOSPECHAR QUE HAY AVERIA EN EL SISTEMA DE LLENADO DE COMBUSTIBLE. INVESTIGAR Y REPARAR (Ver 28-21-00, Bloque 1).");
+      }else{
+        if (confirm("SOSPECHAR DEL SISTEMA DE VENTILACION DEL DEPOSITO AUXILIAR. OBTENER ACCESO AL DEPOSITO AUXILIAR E INSPECCIONAR LA TUBERIA. \n\n ¿ESTA AVERIADA LA TUBERIA?")) {
+          alert("REPARAR LA AVERIA.");
+        }else{
+          if ("SOSPECHAR QUE LA VALVULA DE VENTILACION DE FLOTADOR EN DEPOSITO AUXILIAR ESTA AVERIADA. \n\n ¿ESTA AVERIADA LA VALVULA?"){
+            alert("SUSTITUIR VALVULA DE VENTILACION DE FLOTADOR (Ver 28-12-11, Bloque 401).");
+          }else{
+            alert("SOSPECHAR QUE LA VALVULA ANTIRRETORNO DEL DEPOSITO AUXILIAR ESTA AVERIADA. SUSTITUIR VALVULA DE VENTILACION DE FLOTADOR AVERIADA (Ver 28-12-12, Bloque 401).");
+          }
+        }
+      }
+    }
+
+  </script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ 
+ </body>
+</html>
